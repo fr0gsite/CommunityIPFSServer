@@ -1,0 +1,37 @@
+version: '3.5'
+networks:
+  bestnet:
+    driver: bridge
+    name: bestnet
+    ipam:
+      config:
+        - subnet: 172.11.0.0/24
+
+services:
+  nodejs:
+    build: ./http
+    container_name: nodejs
+    ports:
+      - 4001:4001 
+    logging:
+      driver: json-file
+    networks:
+      bestnet:
+        ipv4_address: '172.11.0.4'
+    restart: always
+    env_file:
+      - .env
+  
+  reverse_proxy:
+    build: ./reverseproxy
+    container_name: reverseproxy
+    logging:
+      driver: json-file
+    ports:
+      - 2053:2053
+    volumes:
+      - ./certs:/app/certs
+    networks:
+      bestnet:
+        ipv4_address: '172.11.0.5'
+    restart: always
