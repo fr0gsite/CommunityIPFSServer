@@ -25,7 +25,7 @@ RUN wget https://dist.ipfs.tech/kubo/v0.38.0/kubo_v0.38.0_linux-amd64.tar.gz \
     && ipfs --version 
 
 RUN npm install express cors mysql nodemailer multer path elliptic base64url
-#RUN cleos wallet create -f walletpass.pwd
+RUN cleos wallet create -f walletpass.pwd
 
 COPY server.js ./
 RUN mkdir /uploads
