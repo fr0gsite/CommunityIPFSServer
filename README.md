@@ -29,7 +29,7 @@ A containerized IPFS server with smart contract-managed upload functionality for
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/AnSieger/Fr0gsiteCommunityUploadIPFSnode.git
+git clone https://github.com/fr0gsite/CommunityIPFSServer.git
 cd Fr0gsiteCommunityUploadIPFSnode
 ```
 
