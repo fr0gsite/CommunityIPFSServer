@@ -30,7 +30,7 @@ A containerized IPFS server with smart contract-managed upload functionality for
 
 ```bash
 git clone https://github.com/fr0gsite/CommunityIPFSServer.git
-cd Fr0gsiteCommunityUploadIPFSnode
+cd CommunityIPFSServer
 ```
 
 ### 2. Environment Configuration
