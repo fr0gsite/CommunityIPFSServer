@@ -21,7 +21,7 @@ A containerized IPFS server with smart contract-managed upload functionality for
 
 - Docker and Docker Compose
 - SSL certificates (for HTTPS)
-- Antelope blockchain account and private key
+- Fr0g blockchain account on which this ⚠️ [Smart Contract is deployed](https://github.com/fr0gsite/IPFSServerContract) ⚠️
 - SMTP server (optional, for email notifications)
 
 ## 🛠️ Installation
@@ -174,4 +174,4 @@ Always check for the latest versions before deployment:
 
 Update versions in `http/Dockerfile` as needed.
 
-**Made with 🐸 for the Fr0g Community**
+**Made with ❤️ for the Fr0g Community**
