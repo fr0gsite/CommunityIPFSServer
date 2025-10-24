@@ -17,20 +17,23 @@ RUN wget https://github.com/AntelopeIO/spring/releases/download/v1.2.2/antelope-
     && rm antelope-spring_1.2.2_amd64.deb
 
 # Install ipfs server
-RUN wget https://dist.ipfs.tech/kubo/v0.38.0/kubo_v0.38.0_linux-amd64.tar.gz \
-    && tar -xvzf kubo_v0.38.0_linux-amd64.tar.gz \
-    && rm kubo_v0.38.0_linux-amd64.tar.gz \
+RUN wget https://dist.ipfs.tech/kubo/v0.38.1/kubo_v0.38.1_linux-amd64.tar.gz \
+    && tar -xvzf kubo_v0.38.1_linux-amd64.tar.gz \
+    && rm kubo_v0.38.1_linux-amd64.tar.gz \
     && cd kubo \
     && bash install.sh \
     && ipfs --version 
 
-RUN npm install express cors mysql nodemailer multer path elliptic base64url
-RUN cleos wallet create -f walletpass.pwd
+RUN npm install express cors mysql nodemailer multer path elliptic base64url express-rate-limit winston
+# Entferne unsichere Wallet-Erstellung:
+# RUN cleos wallet create -f walletpass.pwd
 
-COPY server.js ./
+COPY server_improved.js ./server.js
+COPY init-wallet.sh ./
+RUN chmod +x init-wallet.sh
 RUN mkdir /uploads
 
 RUN apt-get remove -y wget git \
     && apt-get clean
 
-CMD ["node", "server.js"]
+CMD ["./init-wallet.sh"]
